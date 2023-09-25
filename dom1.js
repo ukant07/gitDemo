@@ -11,10 +11,16 @@ console.dir(document)
  addItems.style.color = 'green'; 
  addItems.style.fontWeight = 'bold';
 
-var items = document.getElementsgetElementsByClass('list-group-item');
+var items = document.getElementsByClass('list-group-item');
 
 items[2].style.backgroundColor = 'green';
 
 for(let i = 0; i < items.length; i++) {
   items[i].style.fontWeigt = 'bold';
 }
+
+var item5 = document.getElementsByClass('later-added-item');
+item5.style.backgroundColot = 'yellow';
+
+var listItems = document.getElementsByTagName('li');
+listItems[4].style.fontWeight = 'bold';
