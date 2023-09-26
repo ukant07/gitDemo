@@ -38,5 +38,27 @@ itemList.lastElementChild.textContent = 'Hello 4';
 itemList.previousElementSibling.style.color = 'green';
 
 
+//createElement --
+
+//create a div
+var newDiv = document.createElement('div');
+//adding class
+newDiv.className = 'hello';
+//adding id
+newDiv.id = 'hello1';
+
+//add attribute
+newDiv.setAttribute('title','Hello Div');
+
+//createTextNode
+var newDivText = document.createTextNode ('Hello World');
+
+//now adding the created text node to div
+newDiv.appendChild(newDivText);
+
+var container = document.querySelector ('header .container');
+var h1 = document.querySelector ('header h1');
+
+container.insertBefore(newDiv, h1);
 
 
