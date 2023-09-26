@@ -24,3 +24,19 @@ itemList.firstElementChild.textContent = 'Hello 1';
 
 //lastElementChild
 itemList.lastElementChild.textContent = 'Hello 4';
+
+//nextSibling
+//console.log(itemList.nextSibling);
+
+//nextElementSibling
+//console.log(itemList.nextElementSibling);
+
+//previousSibling
+//console.log( itemList.previousSibling);
+
+//previousElementSibling
+itemList.previousElementSibling.style.color = 'green';
+
+
+
+
