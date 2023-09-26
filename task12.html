@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Input Storage</title>
+</head>
+<body>
+  <h1>Input Form</h1>
+  <label for="name">Name:</label>
+  <input type="text" id="name">
+
+  <label for="email">Email:</label>
+  <input type="email" id="email">
+
+  <label for="phone">Phone:</label>
+  <input type="tel" id="phone">
+
+  <button onclick="saveToLocalStorage()">Submit</button>
+
+  <h4>ur stored data</h4>
+  <div id="display"></div>
+
+  <script>
+    function saveToLocalStorage() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+
+      localStorage.setItem('name', name);
+      localStorage.setItem('email', email);
+      localStorage.setItem('phone', phone);
+
+      displayStoredData();
+    }
+
+    function displayStoredData() {
+      const displayDiv = document.getElementById('display');
+      displayDiv.innerHTML = `Name: ${localStorage.getItem('name')}<br>Email: ${localStorage.getItem('email')}<br>Phone: ${localStorage.getItem('phone')}`;
+    }
+    
+  </script>
+</body>
+</html>
