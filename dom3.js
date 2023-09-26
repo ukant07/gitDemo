@@ -13,3 +13,14 @@ itemList.parentElement.parentElement.style.backgroundColor = 'red';
 //children --> gives HTML collection
 itemList.children[1].style.backgroundColor = 'yellow';
 
+//firstChild
+//console.log(itemList.firstChild);
+
+//firstElementChild
+itemList.firstElementChild.textContent = 'Hello 1';
+
+//lastChild
+//console.log(itemList.lastChild);
+
+//lastElementChild
+itemList.lastElementChild.textContent = 'Hello 4';
