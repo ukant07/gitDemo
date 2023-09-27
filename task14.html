@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task 13</title>
+</head>
+<body>
+    
+  <label for="name">Name:</label>
+  <input type="text" id="name">
+
+  <label for="email">Email:</label>
+  <input type="email" id="email">
+
+  <label for="phone">Phone:</label>
+  <input type="tel" id="phone">
+
+  <button onclick="saveToLocalStorage()">Submit</button>
+
+  <h4>List of Users</h4>
+  <ul id="userList"></ul>
+
+  <script>
+    let userCount = 1; // Counter for users key
+    let editKey = null; // Key for editing user
+
+    function saveToLocalStorage() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+
+      // If editing, update the existing user data
+      if (editKey !== null) {
+        localStorage.setItem(editKey, JSON.stringify({ name, email, phone }));
+        editKey = null; // Reset editKey after editing
+      } else {
+        // Generate a unique key for each user
+        const userKey = `user${userCount}`;
+
+        // Store the inputs in local storage
+        localStorage.setItem(userKey, JSON.stringify({ name, email, phone }));
+        
+        userCount++;
+      }
+
+      displayStoredData();
+      clearInputFields();
+    }
+
+    function displayStoredData() {
+      const userList = document.getElementById('userList');
+      userList.innerHTML = '';
+      
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const userData = JSON.parse(localStorage.getItem(key));
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `Name: ${userData.name}, Email: ${userData.email}, Phone: ${userData.phone} <button onclick="editUser('${key}')">Edit</button> <button onclick="deleteUser('${key}')">Delete</button>`;
+        userList.appendChild(listItem);
+      }
+    }
+
+    function deleteUser(key) {
+      
+      localStorage.removeItem(key);
+
+      displayStoredData();
+    }
+
+    function editUser(key) {
+      
+      const userData = JSON.parse(localStorage.getItem(key));
+
+      document.getElementById('name').value = userData.name;
+      document.getElementById('email').value = userData.email;
+      document.getElementById('phone').value = userData.phone;
+
+      // Set editKey to the current key for editing
+      editKey = key;
+    }
+
+    function clearInputFields() {
+      // Clear input fields after submission or editing
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('phone').value = '';
+    }
+
+    // Display stored data on page load
+    displayStoredData();
+  </script>
+</body>
+</html>
